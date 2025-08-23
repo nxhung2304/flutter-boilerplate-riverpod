@@ -1,0 +1,13 @@
+{
+  "example": {
+    "title": "Example",
+    "new": "New",
+    "name": "Name",
+    "create_success": "Create success",
+    "update_success": "Update success",
+    "delete_success": "Delete success"
+  },
+  "home": {
+    "title": "Home"
+  }
+}
