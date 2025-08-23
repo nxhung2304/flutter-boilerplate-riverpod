@@ -12,5 +12,6 @@ sealed class Example with _$Example {
     @JsonKey(name: 'updated_at') String? updatedAt,
   }) = _Example;
 
-  factory Example.fromJson(Map<String, dynamic> json) => _$ExampleFromJson(json);
+  factory Example.fromJson(Map<String, dynamic> json) =>
+      _$ExampleFromJson(json);
 }

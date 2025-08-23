@@ -30,14 +30,13 @@ class SharedScaffold extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar:
-          showAppBar
-              ? SharedAppBar(
-                title: title,
-                centerTitle: centerTitle,
-                backgroundColor: appBarBackgroundColor,
-              )
-              : null,
+      appBar: showAppBar
+          ? SharedAppBar(
+              title: title,
+              centerTitle: centerTitle,
+              backgroundColor: appBarBackgroundColor,
+            )
+          : null,
       bottomNavigationBar:
           showBottomNav ? SharedBottomNav(currentRoute: currentRoute) : null,
       body: body,

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:boilerplate_riverpod/core/constants/app_endpoints.dart';
 import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/core/services/token_storage_service.dart';
 import 'package:boilerplate_riverpod/core/providers/core_providers.dart';

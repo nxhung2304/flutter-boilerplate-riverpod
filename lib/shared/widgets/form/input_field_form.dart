@@ -1,3 +1,4 @@
+import 'package:boilerplate_riverpod/shared/theme/app_radius.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -48,9 +49,8 @@ class InputFormField extends HookConsumerWidget {
       decoration: InputDecoration(
         prefixIcon: _buildPrefixIcon(),
         suffixIcon: isPassword ? _buildSuffixIcon(obscure) : null,
-
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppRadius.md)),
         hintText: hintText,
         labelText: labelText,
         errorMaxLines: 2,
@@ -59,7 +59,6 @@ class InputFormField extends HookConsumerWidget {
       validator: validator,
       autofocus: false,
       textInputAction: textInputAction ?? _getDefaultTextInputAction(),
-
       obscureText: obscure.value,
       enableSuggestions: !obscure.value,
       autocorrect: !obscure.value,
@@ -101,15 +100,14 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-      labelText: 'Email',
-      hintText: 'Enter your email',
-      prefixIcon: Icons.email_outlined,
-      initialValue: initialValue,
-      onChanged: onChanged,
-      controller: controller,
-      enabled: enabled,
-      textInputAction: TextInputAction.next
-    );
+        labelText: 'Email',
+        hintText: 'Enter your email',
+        prefixIcon: Icons.email_outlined,
+        initialValue: initialValue,
+        onChanged: onChanged,
+        controller: controller,
+        enabled: enabled,
+        textInputAction: TextInputAction.next);
   }
 
   static InputFormField password({
@@ -121,16 +119,15 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-      labelText: labelText ?? 'Password',
-      hintText: 'Enter your password',
-      isPassword: true,
-      prefixIcon: Icons.lock_outlined,
-      initialValue: initialValue,
-      onChanged: onChanged,
-      controller: controller,
-      enabled: enabled,
-      textInputAction: TextInputAction.next
-    );
+        labelText: labelText ?? 'Password',
+        hintText: 'Enter your password',
+        isPassword: true,
+        prefixIcon: Icons.lock_outlined,
+        initialValue: initialValue,
+        onChanged: onChanged,
+        controller: controller,
+        enabled: enabled,
+        textInputAction: TextInputAction.next);
   }
 
   static InputFormField name({
@@ -141,14 +138,13 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-      labelText: 'Full Name',
-      hintText: 'Enter your full name',
-      prefixIcon: Icons.person_outlined,
-      initialValue: initialValue,
-      onChanged: onChanged,
-      controller: controller,
-      enabled: enabled,
-      textInputAction: TextInputAction.next
-    );
+        labelText: 'Full Name',
+        hintText: 'Enter your full name',
+        prefixIcon: Icons.person_outlined,
+        initialValue: initialValue,
+        onChanged: onChanged,
+        controller: controller,
+        enabled: enabled,
+        textInputAction: TextInputAction.next);
   }
 }

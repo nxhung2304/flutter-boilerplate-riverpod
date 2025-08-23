@@ -1,4 +1,3 @@
-
 import 'package:boilerplate_riverpod/core/exceptions/api_exception.dart';
 
 class ServerException extends ApiException {

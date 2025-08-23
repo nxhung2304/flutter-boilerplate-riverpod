@@ -10,7 +10,7 @@ extension StorageServiceExtensions on StorageService {
     try {
       final jsonString = await getString(key);
       if (jsonString == null || jsonString.isEmpty) return null;
-      
+
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
       return fromJson(json);
     } catch (e) {
@@ -31,4 +31,3 @@ extension StorageServiceExtensions on StorageService {
     }
   }
 }
-

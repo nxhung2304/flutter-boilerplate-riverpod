@@ -18,6 +18,7 @@ class AppLogger {
       logger.e(msg);
     }
   }
+
   info(String msg, {dynamic data}) {
     final Logger logger = Logger();
     if (data != null) {
@@ -26,6 +27,7 @@ class AppLogger {
       logger.i(msg);
     }
   }
+
   warning(String msg, {dynamic data}) {
     final Logger logger = Logger();
     if (data != null) {

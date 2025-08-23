@@ -5,11 +5,11 @@ commit_msg=$(cat "$1")
 conventional_regex="^(feat|fix|docs|style|refactor|test|chore|ci|perf|build)(\([a-zA-Z0-9_-]+\))?: .{1,}$"
 
 if echo "$commit_msg" | grep -Eq "$conventional_regex"; then
-  echo "✅ Conventional Commit passed."
+  echo "Conventional Commit passed."
   exit 0
 else
-  echo "❌ Commit message not valid!"
-  echo "👉 Use format: <type>(<optional_scope>): description"
+  echo "Commit message not valid!"
+  echo "Use format: <type>(<optional_scope>): description"
   echo ""
   echo "🔧 Allowed types:"
   echo "  - feat:      New feature"

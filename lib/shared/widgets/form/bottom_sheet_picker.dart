@@ -1,3 +1,5 @@
+import 'package:boilerplate_riverpod/shared/theme/app_radius.dart';
+import 'package:boilerplate_riverpod/shared/theme/app_spacing.dart';
 import 'package:flutter/material.dart';
 
 class BottomSheetPicker<T> extends StatefulWidget {
@@ -6,7 +8,7 @@ class BottomSheetPicker<T> extends StatefulWidget {
   final String title;
   final Function(T?)? onItemSelected;
   final Widget Function(T item, bool isSelected, Color selectedColor)
-  itemBuilder;
+      itemBuilder;
   final Widget Function(T? item, Color selectedColor) previewBuilder;
   final int crossAxisCount;
   final double childAspectRatio;
@@ -45,21 +47,21 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
       children: [
         Material(
           elevation: 4,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(AppRadius.lg),
           child: InkWell(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(AppRadius.lg),
             onTap: showBottomSheet,
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(AppRadius.lg),
                 border: Border.all(color: Colors.grey.shade300),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   widget.previewBuilder(selectedItem, widget.selectedColor),
-                  const SizedBox(width: 12),
+                  const SizedBox(width: AppSpacing.md),
                   Text(
                     'Tap to select',
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
@@ -92,9 +94,8 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
               ),
               child: Column(
                 children: [
-                  // Handle bar
                   Container(
-                    margin: const EdgeInsets.only(top: 12),
+                    margin: const EdgeInsets.only(top: AppSpacing.md),
                     height: 4,
                     width: 40,
                     decoration: BoxDecoration(
@@ -120,8 +121,8 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                         Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            color: widget.selectedColor.withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(12),
+                            color: widget.selectedColor.withValues(),
+                            borderRadius: BorderRadius.circular(AppRadius.md),
                           ),
                           child: widget.previewBuilder(
                             selectedItem,
@@ -144,11 +145,11 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: widget.crossAxisCount,
-                                    childAspectRatio: widget.childAspectRatio,
-                                    crossAxisSpacing: 8,
-                                    mainAxisSpacing: 8,
-                                  ),
+                                crossAxisCount: widget.crossAxisCount,
+                                childAspectRatio: widget.childAspectRatio,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                              ),
                               itemCount: widget.items.length,
                               itemBuilder: (context, index) {
                                 final item = widget.items[index];
@@ -168,17 +169,15 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color:
-                                          isSelected
-                                              ? widget.selectedColor
-                                                  .withOpacity(0.1)
-                                              : Colors.grey.shade50,
-                                      borderRadius: BorderRadius.circular(12),
+                                      color: isSelected
+                                          ? widget.selectedColor.withValues()
+                                          : Colors.grey.shade50,
+                                      borderRadius:
+                                          BorderRadius.circular(AppRadius.md),
                                       border: Border.all(
-                                        color:
-                                            isSelected
-                                                ? widget.selectedColor
-                                                : Colors.grey.shade300,
+                                        color: isSelected
+                                            ? widget.selectedColor
+                                            : Colors.grey.shade300,
                                         width: isSelected ? 2 : 1,
                                       ),
                                     ),
@@ -210,9 +209,10 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: widget.selectedColor,
                           foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: AppSpacing.md),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(AppRadius.md),
                           ),
                         ),
                         child: const Text(

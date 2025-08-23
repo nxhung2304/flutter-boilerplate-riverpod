@@ -4,7 +4,7 @@ class ExampleStrings {
   static String get title => "example.title".tr();
   static String get createTitle => "example.create_title".tr();
   static String get updateTitle => "example.update_title".tr();
-  
+
   static String get create => "example.create".tr();
   static String get update => "example.update".tr();
 

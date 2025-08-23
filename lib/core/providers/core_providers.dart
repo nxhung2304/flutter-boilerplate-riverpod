@@ -11,7 +11,6 @@ part 'core_providers.g.dart';
 @Riverpod(keepAlive: true)
 ApiClient apiClient(Ref ref) {
   final config = ref.watch(apiClientConfigProvider);
-  print(config);
 
   return ApiClient(baseUrl: config.baseUrl, ref: ref);
 }

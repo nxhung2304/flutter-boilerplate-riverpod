@@ -15,8 +15,8 @@ class ExampleForm extends HookConsumerWidget {
   final Future<void> Function(ExampleParams) onSubmit;
 
   const ExampleForm.create({super.key, required this.onSubmit})
-    : mode = FormMode.create,
-      exampleId = null;
+      : mode = FormMode.create,
+        exampleId = null;
 
   const ExampleForm.edit({
     super.key,

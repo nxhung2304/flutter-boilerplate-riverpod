@@ -1,4 +1,3 @@
-
 import 'package:boilerplate_riverpod/core/constants/app_endpoints.dart';
 import 'package:boilerplate_riverpod/core/models/api_response.dart';
 import 'package:boilerplate_riverpod/core/services/api_client.dart';
@@ -14,7 +13,8 @@ class ExampleRemoteDataSource {
     try {
       final response = await apiClient.get(AppEndpoints.examples);
       final List<dynamic> examplesJson = response.data['data'] as List<dynamic>;
-      final examples = examplesJson.map((example) => Example.fromJson(example)).toList();
+      final examples =
+          examplesJson.map((example) => Example.fromJson(example)).toList();
 
       return ApiResponse.success(examples);
     } catch (e) {
@@ -22,7 +22,8 @@ class ExampleRemoteDataSource {
     }
   }
 
-  Future<ApiResponse<Example>> createExample(ExampleParams exampleParams) async {
+  Future<ApiResponse<Example>> createExample(
+      ExampleParams exampleParams) async {
     try {
       final response = await apiClient.post(
         AppEndpoints.examples,
@@ -63,10 +64,10 @@ class ExampleRemoteDataSource {
         AppEndpoints.updateExample(exampleId),
         data: exampleParams.toJson(),
       );
-      final Map<String, dynamic> ExampleJson =
+      final Map<String, dynamic> exampleJson =
           response.data['data'] as Map<String, dynamic>;
 
-      final example = Example.fromJson(ExampleJson);
+      final example = Example.fromJson(exampleJson);
 
       return ApiResponse.success(example);
     } catch (e) {
@@ -76,11 +77,12 @@ class ExampleRemoteDataSource {
 
   Future<ApiResponse<Example>> toggleExample(int exampleId) async {
     try {
-      final response = await apiClient.post(AppEndpoints.toggleExample(exampleId));
+      final response =
+          await apiClient.post(AppEndpoints.toggleExample(exampleId));
 
-      final Map<String, dynamic> ExampleJson =
+      final Map<String, dynamic> exampleJson =
           response.data['data'] as Map<String, dynamic>;
-      final toggledExample = Example.fromJson(ExampleJson);
+      final toggledExample = Example.fromJson(exampleJson);
 
       return ApiResponse.success(toggledExample);
     } catch (e) {
@@ -90,11 +92,12 @@ class ExampleRemoteDataSource {
 
   Future<ApiResponse<Example>> deleteExample(int exampleId) async {
     try {
-      final response = await apiClient.delete(AppEndpoints.deleteExample(exampleId));
+      final response =
+          await apiClient.delete(AppEndpoints.deleteExample(exampleId));
 
-      final Map<String, dynamic> ExampleJson =
+      final Map<String, dynamic> exampleJson =
           response.data['data'] as Map<String, dynamic>;
-      final toggledExample = Example.fromJson(ExampleJson);
+      final toggledExample = Example.fromJson(exampleJson);
 
       return ApiResponse.success(toggledExample);
     } catch (e) {

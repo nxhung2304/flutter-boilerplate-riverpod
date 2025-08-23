@@ -9,7 +9,7 @@ import 'package:boilerplate_riverpod/features/example/strings/example_strings.da
 import 'package:boilerplate_riverpod/shared/widgets/layout/shared_scaffold.dart';
 import 'package:boilerplate_riverpod/shared/widgets/notifications/app_snackbar.dart';
 
-class NewExamplePage extends  HookConsumerWidget {
+class NewExamplePage extends HookConsumerWidget {
   const NewExamplePage({super.key});
 
   @override
@@ -33,46 +33,15 @@ class NewExamplePage extends  HookConsumerWidget {
       }
     }
 
-    return WillPopScope(
+    return PopScope(
       child: SharedScaffold(
         title: ExampleStrings.createTitle,
         currentRoute: AppRoutes.example,
         body: ExampleForm.create(
-          onSubmit:
-              (ExampleParams exampleParams) => _onSubmit(context, ref, exampleParams),
+          onSubmit: (ExampleParams exampleParams) =>
+              _onSubmit(context, ref, exampleParams),
         ),
       ),
-      onWillPop: () async {
-        // final hasChanges =
-        //     ref.read(ExampleFormControllerProvider.notifier).hasChanges();
-        // if (!hasChanges) {
-        //   return true;
-        // }
-
-        final willPop = await _showExitDialog(context);
-        return willPop ?? false;
-      },
-    );
-  }
-
-  Future<bool?> _showExitDialog(BuildContext context) {
-    return showDialog<bool>(
-      context: context,
-      builder:
-          (BuildContext context) => AlertDialog(
-            title: Text('Confirm exit'),
-            content: Text('Are you want to exit? Data unsave will be lost.'),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
-                child: Text('OK'),
-              ),
-            ],
-          ),
     );
   }
 }

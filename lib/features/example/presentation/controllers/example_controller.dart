@@ -54,10 +54,10 @@ class ExampleController extends _$ExampleController {
 
         final updatedExample = response.data!;
 
-        final updatedExamples =
-            currentExamples
-                .map((example) => example.id == updatedExample.id ? updatedExample : example)
-                .toList();
+        final updatedExamples = currentExamples
+            .map((example) =>
+                example.id == updatedExample.id ? updatedExample : example)
+            .toList();
 
         state = AsyncValue.data(updatedExamples);
 

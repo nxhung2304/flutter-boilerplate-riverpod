@@ -32,7 +32,8 @@ class TokenStorageService extends _$TokenStorageService {
 
       state = AsyncData(tokens);
     } catch (e) {
-      print('Error saving tokens: $e');
+      ref.read(appLoggerProvider).error("Error saving tokens", data: e);
+
       state = AsyncError(e, StackTrace.current);
     }
   }
@@ -43,9 +44,9 @@ class TokenStorageService extends _$TokenStorageService {
       await storage.remove(_tokenKey);
 
       state = const AsyncData(null);
-      print("Token cleared");
+      ref.read(appLoggerProvider).info("Token cleared");
     } catch (e) {
-      print("Error clearing token: $e");
+      ref.read(appLoggerProvider).error("Error clearing token", data: e);
     }
   }
 

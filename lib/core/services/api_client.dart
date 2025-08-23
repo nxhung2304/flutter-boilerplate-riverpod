@@ -53,11 +53,10 @@ class ApiClient {
     );
 
     final authInterceptor = AuthInterceptor(
-      logger: appLogger,
-      ref: ref,
-      tokenStorageService: tokenStorageService,
-      dio: _dio
-    );
+        logger: appLogger,
+        ref: ref,
+        tokenStorageService: tokenStorageService,
+        dio: _dio);
 
     _dio.interceptors.addAll([authInterceptor, loggingInterceptor]);
   }
@@ -105,7 +104,6 @@ class ApiClient {
     } on NetworkException {
       rethrow;
     } on DioException {
-
       rethrow;
     } catch (e) {
       rethrow;
