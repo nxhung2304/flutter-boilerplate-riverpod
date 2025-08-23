@@ -20,6 +20,7 @@ setup:
 	fvm flutter pub get
 	dart run build_runner build --delete-conflicting-outputs
 	make install-hooks
+	pre-commit install
 
 clean:
 	fvm flutter clean
