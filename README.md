@@ -2,11 +2,28 @@
 
 A production-ready Flutter boilerplate with Riverpod state management, following clean architecture principles and modern development practices.
 
-## **Core Architecture**
-- **Clean Architecture** with feature-based structure
-- **Riverpod** with annotations and code generation
-- **Dependency Injection** using Riverpod providers
-- **GoRouter** to navigation
+## Getting Started
+
+### **Prerequisites**
+- Flutter SDK 3.5.4+
+- Dart 3.0+
+- FVM: https://fvm.app/documentation/getting-started
+
+### **Setup**
+```
+make setup
+make run-dev
+```
+
+## Architecture Overview
+
+### **Data Flow**
+```
+  Widget → Controller (@riverpod) → Repository → DataSource → API/Storage
+      ↑        ↓                      ↑           ↑           ↑
+     UI      State              Local+Remote   Dio HTTP   SharedPrefs
+          (AsyncValue)          (offline-first) (interceptors)
+```
 
 ## Project Structure
 
@@ -40,25 +57,3 @@ lib/
     └── strings/          # Shared translations
 ```
 
-## Getting Started
-
-### **Prerequisites**
-- Flutter SDK 3.7+
-- Dart 3.0+
-- FVM: https://fvm.app/documentation/getting-started
-
-### **Setup**
-```
-make setup
-make run-dev
-```
-
-## Architecture Overview
-
-### **Data Flow**
-```
-  Widget → Controller (@riverpod) → Repository → DataSource → API/Storage
-      ↑        ↓                      ↑           ↑           ↑
-     UI      State              Local+Remote   Dio HTTP   SharedPrefs
-          (AsyncValue)          (offline-first) (interceptors)
-```

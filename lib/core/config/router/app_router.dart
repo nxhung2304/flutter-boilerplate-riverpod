@@ -6,7 +6,6 @@ import 'package:boilerplate_riverpod/features/example/presentation/pages/new_exa
 import 'package:boilerplate_riverpod/features/example/presentation/pages/example_page.dart';
 import 'package:boilerplate_riverpod/features/example/strings/example_error_strings.dart';
 import 'package:boilerplate_riverpod/features/home/presentation/pages/home_page.dart';
-import 'package:boilerplate_riverpod/shared/strings/shared_strings.dart';
 
 final appRouter = GoRouter(
   initialLocation: AppRoutes.home,
@@ -38,4 +37,3 @@ final appRouter = GoRouter(
   ],
 );
 
-final _protectedRoutes = [];
