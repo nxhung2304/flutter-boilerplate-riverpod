@@ -41,13 +41,13 @@ class ExampleController extends _$ExampleController {
 
   Future<ApiResponse<bool>> updateExample(
     int exampleId,
-    ExampleParams ExampleParams,
+    ExampleParams exampleParams,
   ) async {
     state = const AsyncLoading();
 
     try {
       final repository = ref.read(exampleRepositoryProvider);
-      final response = await repository.update(exampleId, ExampleParams);
+      final response = await repository.update(exampleId, exampleParams);
 
       if (response.isSuccess && response.data != null) {
         final currentExamples = state.valueOrNull ?? [];

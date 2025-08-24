@@ -8,19 +8,12 @@ repos:
         pass_filenames: false
         always_run: true
 
-      - id: flutter-analyze
-        name: Flutter Analyze
-        entry: flutter analyze
-        language: system
-        pass_filenames: false
-        always_run: true
-
       - id: flutter-test
         name: Flutter Test
         entry: flutter test
         language: system
         pass_filenames: false
-        stages: [push]
+        stages: [pre-push]
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0

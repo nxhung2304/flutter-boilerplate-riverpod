@@ -101,26 +101,26 @@ class AuthInterceptor extends Interceptor {
     // }
   }
 
-  Future<void> _updateTokensFromHeaders(Headers headers) async {
-    final accessToken = headers.value('access-token');
-    final client = headers.value('client');
-    final uid = headers.value('uid');
-    final expiry = headers.value('expiry');
-    final tokenType = headers.value('token-type');
+  // Future<void> _updateTokensFromHeaders(Headers headers) async {
+  //   final accessToken = headers.value('access-token');
+  //   final client = headers.value('client');
+  //   final uid = headers.value('uid');
+  //   final expiry = headers.value('expiry');
+  //   final tokenType = headers.value('token-type');
 
-    if (accessToken != null && client != null && uid != null) {
-      final newTokens = AuthTokens(
-        accessToken: accessToken,
-        client: client,
-        uid: uid,
-        expiry: int.tryParse(expiry ?? '0') ?? 0,
-        tokenType: tokenType ?? 'Bearer',
-      );
+  //   if (accessToken != null && client != null && uid != null) {
+  //     final newTokens = AuthTokens(
+  //       accessToken: accessToken,
+  //       client: client,
+  //       uid: uid,
+  //       expiry: int.tryParse(expiry ?? '0') ?? 0,
+  //       tokenType: tokenType ?? 'Bearer',
+  //     );
 
-      tokenStorageService.saveTokens(newTokens);
-      logger.debug('Tokens updated from response headers');
-    }
-  }
+  //     tokenStorageService.saveTokens(newTokens);
+  //     logger.debug('Tokens updated from response headers');
+  //   }
+  // }
 
   Future<Response> _retryRequest(RequestOptions originalOptions) async {
     logger.info("Calling _retryRequest");
