@@ -6,7 +6,7 @@ part of 'core_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiClientHash() => r'fcf37d3ed1b6a0aaf0d1a21de0bae8799dd1df26';
+String _$apiClientHash() => r'fa355bb49d025df6e1468ac0c5667c127a9a0077';
 
 /// See also [apiClient].
 @ProviderFor(apiClient)
@@ -56,21 +56,24 @@ final apiClientConfigProvider = AutoDisposeProvider<ApiClientConfig>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef ApiClientConfigRef = AutoDisposeProviderRef<ApiClientConfig>;
-String _$appLoggerHash() => r'7a3044f5a0d402b3650407c5580520f6e78a1e22';
+String _$appLifecycleManagerHash() =>
+    r'9f0ee8618560e529521bae6b59866895d168a5b6';
 
-/// See also [appLogger].
-@ProviderFor(appLogger)
-final appLoggerProvider = AutoDisposeProvider<AppLogger>.internal(
-  appLogger,
-  name: r'appLoggerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appLoggerHash,
+/// See also [appLifecycleManager].
+@ProviderFor(appLifecycleManager)
+final appLifecycleManagerProvider =
+    AutoDisposeProvider<AppLifecycleManager>.internal(
+  appLifecycleManager,
+  name: r'appLifecycleManagerProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$appLifecycleManagerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef AppLoggerRef = AutoDisposeProviderRef<AppLogger>;
+typedef AppLifecycleManagerRef = AutoDisposeProviderRef<AppLifecycleManager>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

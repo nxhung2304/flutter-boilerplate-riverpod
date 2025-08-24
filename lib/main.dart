@@ -12,7 +12,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   AppEnvironment environment = _determineEnvironment();
-  AppLogger appLogger = AppLogger();
 
   try {
     await Environment.initialize(environment);
@@ -20,7 +19,7 @@ void main() async {
     await EasyLocalization.ensureInitialized();
     await StorageService().init();
   } catch (e) {
-    appLogger.error('App initialization failed', data: e);
+    AppLogger.e('App initialization failed', data: e);
   }
 
   runApp(

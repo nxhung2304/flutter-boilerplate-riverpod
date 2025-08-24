@@ -1,3 +1,4 @@
+import 'package:boilerplate_riverpod/core/services/app_lifecycle/app_lifecycle_manager.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_riverpod/core/config/api_client_config.dart';
 import 'package:boilerplate_riverpod/core/config/enviroment.dart';
@@ -35,6 +36,6 @@ ApiClientConfig apiClientConfig(Ref ref) {
 }
 
 @riverpod
-AppLogger appLogger(Ref ref) {
-  return AppLogger();
+AppLifecycleManager appLifecycleManager(Ref ref) {
+  return AppLifecycleManager();
 }

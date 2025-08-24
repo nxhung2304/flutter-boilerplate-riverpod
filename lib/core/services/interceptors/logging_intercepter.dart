@@ -2,10 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 
 class LoggingInterceptor extends Interceptor {
-  final AppLogger logger;
   final bool enableLogging;
 
-  LoggingInterceptor({required this.logger, this.enableLogging = true});
+  LoggingInterceptor({this.enableLogging = true});
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -35,18 +34,18 @@ class LoggingInterceptor extends Interceptor {
   }
 
   void _logRequest(RequestOptions options) {
-    logger.debug("[Request] [${options.method}] ${options.uri}");
+    AppLogger.d("[${options.method}] ${options.uri}");
   }
 
   void _logResponse(Response response) {
-    logger.debug(
-      "[Response] [${response.statusCode}] ${response.requestOptions.path}",
+    AppLogger.d(
+      "[${response.statusCode}] ${response.requestOptions.path}",
     );
   }
 
   void _logError(DioException error) {
-    logger.error(
-      "[Error] [${error.requestOptions.method}] ${error.requestOptions.path}",
+    AppLogger.e(
+      "[${error.requestOptions.method}] ${error.requestOptions.path}",
     );
   }
 }

@@ -7,7 +7,7 @@ part of 'token_storage_service.dart';
 // **************************************************************************
 
 String _$tokenStorageServiceHash() =>
-    r'0cb49b557670744e35d4c236c30d95fd0f420acf';
+    r'806fd584fce224dde57742cffe923f876e56ddc2';
 
 /// See also [TokenStorageService].
 @ProviderFor(TokenStorageService)

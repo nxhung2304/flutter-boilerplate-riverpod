@@ -1,39 +1,64 @@
-import 'package:logger/web.dart';
+import 'package:logger/logger.dart';
 
 class AppLogger {
-  debug(String msg, {dynamic data}) {
-    final Logger logger = Logger();
+  static final Logger _logger = Logger(
+    printer: PrettyPrinter(
+      methodCount: 0,
+      errorMethodCount: 0,
+      lineLength: 80,
+      colors: true,
+      printEmojis: true,
+      noBoxingByDefault: true,
+    ),
+  );
+
+  static void d(String msg, {dynamic data}) {
+    final className = _getCallerClassName();
     if (data != null) {
-      logger.d("$msg: $data");
+      _logger.d("[$className] $msg: $data");
     } else {
-      logger.d(msg);
+      _logger.d("[$className] $msg");
     }
   }
 
-  error(String msg, {dynamic data}) {
-    final Logger logger = Logger();
+  static void e(String msg,
+      {dynamic data, dynamic error, StackTrace? stackTrace}) {
+    final className = _getCallerClassName();
+    final message = data != null ? "$msg: $data" : msg;
+    _logger.e("[$className] $message", error: error, stackTrace: stackTrace);
+  }
+
+  static void i(String msg, {dynamic data}) {
+    final className = _getCallerClassName();
     if (data != null) {
-      logger.e("$msg: $data");
+      _logger.i("[$className] $msg: $data");
     } else {
-      logger.e(msg);
+      _logger.i("[$className] $msg");
     }
   }
 
-  info(String msg, {dynamic data}) {
-    final Logger logger = Logger();
+  static void w(String msg, {dynamic data}) {
+    final className = _getCallerClassName();
     if (data != null) {
-      logger.i("$msg: $data");
+      _logger.w("[$className] $msg: $data");
     } else {
-      logger.i(msg);
+      _logger.w("[$className] $msg");
     }
   }
 
-  warning(String msg, {dynamic data}) {
-    final Logger logger = Logger();
-    if (data != null) {
-      logger.w("$msg: $data");
-    } else {
-      logger.w(msg);
+  static String _getCallerClassName() {
+    final stackTrace = StackTrace.current;
+    final frames = stackTrace.toString().split('\n');
+
+    for (int i = 1; i < frames.length; i++) {
+      final frame = frames[i];
+      if (!frame.contains('AppLogger') && !frame.contains('Logger')) {
+        final match = RegExp(r'(\w+)\.').firstMatch(frame);
+        if (match != null) {
+          return match.group(1) ?? 'Unknown';
+        }
+      }
     }
+    return 'Unknown';
   }
 }

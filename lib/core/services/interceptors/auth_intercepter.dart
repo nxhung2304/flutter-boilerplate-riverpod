@@ -7,13 +7,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_riverpod/core/models/auth_tokens.dart';
 
 class AuthInterceptor extends Interceptor {
-  final AppLogger logger;
   final TokenStorageService tokenStorageService;
   final Ref ref;
   final Dio dio;
 
   AuthInterceptor({
-    required this.logger,
     required this.tokenStorageService,
     required this.ref,
     required this.dio,
@@ -56,7 +54,7 @@ class AuthInterceptor extends Interceptor {
         'expiry': tokens.expiry.toString(),
       });
 
-      logger.debug('Auth headers added to request');
+      AppLogger.d('Auth headers added to request');
     }
   }
 
@@ -97,7 +95,7 @@ class AuthInterceptor extends Interceptor {
     //     return true;
     //   }
     // } catch (e) {
-    // logger.error(e.toString());
+    // AppLogger.e(e.toString());
     // }
   }
 
@@ -118,13 +116,11 @@ class AuthInterceptor extends Interceptor {
   //     );
 
   //     tokenStorageService.saveTokens(newTokens);
-  //     logger.debug('Tokens updated from response headers');
+  //     AppLogger.d('Tokens updated from response headers');
   //   }
   // }
 
   Future<Response> _retryRequest(RequestOptions originalOptions) async {
-    logger.info("Calling _retryRequest");
-
     await _addAuthHeaders(originalOptions);
 
     return await dio.request(

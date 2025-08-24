@@ -1,7 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:boilerplate_riverpod/core/models/auth_tokens.dart';
 import 'package:boilerplate_riverpod/core/providers/core_providers.dart';
+import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'token_storage_service.g.dart';
@@ -32,7 +34,7 @@ class TokenStorageService extends _$TokenStorageService {
 
       state = AsyncData(tokens);
     } catch (e) {
-      ref.read(appLoggerProvider).error("Error saving tokens", data: e);
+      AppLogger.e("Error saving tokens", data: e);
 
       state = AsyncError(e, StackTrace.current);
     }
@@ -44,9 +46,9 @@ class TokenStorageService extends _$TokenStorageService {
       await storage.remove(_tokenKey);
 
       state = const AsyncData(null);
-      ref.read(appLoggerProvider).info("Token cleared");
+      AppLogger.i("Token cleared");
     } catch (e) {
-      ref.read(appLoggerProvider).error("Error clearing token", data: e);
+      AppLogger.e("Error clearing token", data: e);
     }
   }
 
@@ -60,9 +62,7 @@ class TokenStorageService extends _$TokenStorageService {
       final tokenJson = jsonDecode(tokenString) as Map<String, dynamic>;
       final tokens = AuthTokens.fromJson(tokenJson);
       if (_isTokenValid(tokens)) {
-        ref
-            .read(appLoggerProvider)
-            .debug("Loaded valid tokens", data: tokens.uid);
+        AppLogger.e("Loaded valid tokens", data: tokens.uid);
         return tokens;
       } else {
         await clearTokens();

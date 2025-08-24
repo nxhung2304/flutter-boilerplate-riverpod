@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:boilerplate_riverpod/core/exceptions/network_exception.dart';
-import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/core/services/interceptors/auth_intercepter.dart';
 import 'package:boilerplate_riverpod/core/services/interceptors/logging_intercepter.dart';
 import 'package:boilerplate_riverpod/core/services/network_connectivity.dart';
@@ -10,7 +9,6 @@ import 'package:boilerplate_riverpod/core/services/token_storage_service.dart';
 
 class ApiClient {
   late final Dio _dio;
-  late final AppLogger appLogger;
   late final NetworkConnectivity networkConnectivity;
   late final TokenStorageService tokenStorageService;
 
@@ -26,7 +24,6 @@ class ApiClient {
     this.receiveTimeout = const Duration(seconds: 30),
   }) {
     tokenStorageService = TokenStorageService();
-    appLogger = AppLogger();
     networkConnectivity = NetworkConnectivity();
     _initializedDio();
     _setupInterceptors();
@@ -48,12 +45,10 @@ class ApiClient {
 
   void _setupInterceptors() {
     final loggingInterceptor = LoggingInterceptor(
-      logger: appLogger,
       enableLogging: true,
     );
 
     final authInterceptor = AuthInterceptor(
-        logger: appLogger,
         ref: ref,
         tokenStorageService: tokenStorageService,
         dio: _dio);
@@ -67,8 +62,6 @@ class ApiClient {
     Map<String, String>? headers,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    // _setHeaders(headers);
-
     try {
       await _checkNetwork();
       final response = await _dio.get(
@@ -89,8 +82,6 @@ class ApiClient {
     Map<String, String>? headers,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    // _setHeaders(headers);
-
     try {
       await _checkNetwork();
 
@@ -126,8 +117,6 @@ class ApiClient {
     Map<String, String>? headers,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    // _setHeaders(headers);
-
     try {
       final response = await _dio.put(
         endpoint,
@@ -147,8 +136,6 @@ class ApiClient {
     Map<String, String>? headers,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    _setHeaders(headers);
-
     try {
       final response = await _dio.patch(
         endpoint,
@@ -167,7 +154,6 @@ class ApiClient {
     Map<String, String>? headers,
     T Function(Map<String, dynamic>)? fromJson,
   }) async {
-    _setHeaders(headers);
     try {
       final response = await _dio.delete(
         endpoint,
@@ -176,12 +162,6 @@ class ApiClient {
       return response;
     } catch (e) {
       rethrow;
-    }
-  }
-
-  _setHeaders(Map<String, String>? customHeaders) {
-    if (customHeaders != null) {
-      _dio.options.headers.addAll(customHeaders);
     }
   }
 
