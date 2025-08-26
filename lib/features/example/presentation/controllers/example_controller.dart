@@ -29,15 +29,14 @@ class ExampleController extends _$ExampleController with AppLifecycleMixin {
   }
 
   void _setupLifecycleCallbacks() {
-    AppLogger.i("_setupLifecycleCallbacks");
     registerOnBackground(() {
-      print('App in background');
+      AppLogger.i('App in background');
     });
     registerOnForeground(() {
-      print('App in foreground');
+      AppLogger.i('App in foreground');
     });
     registerOnBeforeKill(() {
-      print('App before kill');
+      AppLogger.i('App before kill');
     });
   }
 

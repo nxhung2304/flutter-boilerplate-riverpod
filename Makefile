@@ -1,4 +1,4 @@
-.PHONY: watch generate run-dev run-staging run-production setup clean test test-coverage analyze format format-check build-dev build-staging build-production build-ios-dev build-ios-staging build-ios-production install-hooks remove-hooks help
+.PHONY: watch generate run-dev run-staging run-production setup clean-ios test test-coverage analyze format format-check build-dev build-staging build-production build-ios-dev build-ios-staging build-ios-production install-hooks remove-hooks help
 
 # Development commands
 watch:
@@ -21,7 +21,7 @@ setup:
 	dart run build_runner build --delete-conflicting-outputs
 	make install-hooks
 
-clean:
+clean-ios:
 	cd ios/
 	rm -rf Pods Podfile.lock
 	cd ..
@@ -92,7 +92,7 @@ help:
 	@echo "  watch          Watch for changes and regenerate code"
 	@echo "  generate       One-time code generation"
 	@echo "  setup          Initial project setup (pub get + generate + hooks)"
-	@echo "  clean          Clean and reset project"
+	@echo "  clean-ios          Clean and reset iOS project"
 	@echo ""
 	@echo "Running:"
 	@echo "  run-dev        Run development environment"
