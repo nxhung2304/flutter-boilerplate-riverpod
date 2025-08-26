@@ -60,5 +60,5 @@ lib/
 
 ## Todo
 - [ ]: Build CrashReportingService to use in Logger.e
-- [ ]: add lifecycle app
+- [x]: add lifecycle app
 - [ ]: add .env to enable features
