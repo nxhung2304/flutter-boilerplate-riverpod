@@ -44,6 +44,9 @@ class Environment {
   static bool get debugMode => _getBool('DEBUG_MODE');
   static String get logLevel => _getString('LOG_LEVEL');
 
+  // Features
+  static bool get enabledCrashtics => _getBool('ENABLED_CRASHTICS');
+
   static String _getString(String key) {
     final value = dotenv.env[key];
     if (value == null || value.isEmpty) {

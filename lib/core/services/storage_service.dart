@@ -22,7 +22,7 @@ class StorageService {
     return _prefs!;
   }
 
-  Future<void> init() async {
+  Future<void> initialize() async {
     _prefs = await SharedPreferences.getInstance();
   }
 
