@@ -38,9 +38,7 @@ class LoggingInterceptor extends Interceptor {
   }
 
   void _logResponse(Response response) {
-    AppLogger.d(
-      "[${response.statusCode}] ${response.requestOptions.path}",
-    );
+    AppLogger.d("[${response.statusCode}] ${response.requestOptions.path}");
   }
 
   void _logError(DioException error) {

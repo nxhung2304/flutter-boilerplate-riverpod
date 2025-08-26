@@ -23,7 +23,8 @@ class ExampleRemoteDataSource {
   }
 
   Future<ApiResponse<Example>> createExample(
-      ExampleParams exampleParams) async {
+    ExampleParams exampleParams,
+  ) async {
     try {
       final response = await apiClient.post(
         AppEndpoints.examples,
@@ -77,8 +78,9 @@ class ExampleRemoteDataSource {
 
   Future<ApiResponse<Example>> toggleExample(int exampleId) async {
     try {
-      final response =
-          await apiClient.post(AppEndpoints.toggleExample(exampleId));
+      final response = await apiClient.post(
+        AppEndpoints.toggleExample(exampleId),
+      );
 
       final Map<String, dynamic> exampleJson =
           response.data['data'] as Map<String, dynamic>;
@@ -92,8 +94,9 @@ class ExampleRemoteDataSource {
 
   Future<ApiResponse<Example>> deleteExample(int exampleId) async {
     try {
-      final response =
-          await apiClient.delete(AppEndpoints.deleteExample(exampleId));
+      final response = await apiClient.delete(
+        AppEndpoints.deleteExample(exampleId),
+      );
 
       final Map<String, dynamic> exampleJson =
           response.data['data'] as Map<String, dynamic>;

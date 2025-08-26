@@ -8,7 +8,7 @@ class BottomSheetPicker<T> extends StatefulWidget {
   final String title;
   final Function(T?)? onItemSelected;
   final Widget Function(T item, bool isSelected, Color selectedColor)
-      itemBuilder;
+  itemBuilder;
   final Widget Function(T? item, Color selectedColor) previewBuilder;
   final int crossAxisCount;
   final double childAspectRatio;
@@ -145,11 +145,11 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: widget.crossAxisCount,
-                                childAspectRatio: widget.childAspectRatio,
-                                crossAxisSpacing: 8,
-                                mainAxisSpacing: 8,
-                              ),
+                                    crossAxisCount: widget.crossAxisCount,
+                                    childAspectRatio: widget.childAspectRatio,
+                                    crossAxisSpacing: 8,
+                                    mainAxisSpacing: 8,
+                                  ),
                               itemCount: widget.items.length,
                               itemBuilder: (context, index) {
                                 final item = widget.items[index];
@@ -169,15 +169,19 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                                   },
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: isSelected
-                                          ? widget.selectedColor.withValues()
-                                          : Colors.grey.shade50,
-                                      borderRadius:
-                                          BorderRadius.circular(AppRadius.md),
+                                      color:
+                                          isSelected
+                                              ? widget.selectedColor
+                                                  .withValues()
+                                              : Colors.grey.shade50,
+                                      borderRadius: BorderRadius.circular(
+                                        AppRadius.md,
+                                      ),
                                       border: Border.all(
-                                        color: isSelected
-                                            ? widget.selectedColor
-                                            : Colors.grey.shade300,
+                                        color:
+                                            isSelected
+                                                ? widget.selectedColor
+                                                : Colors.grey.shade300,
                                         width: isSelected ? 2 : 1,
                                       ),
                                     ),
@@ -210,7 +214,8 @@ class _BottomSheetPickerState<T> extends State<BottomSheetPicker<T>> {
                           backgroundColor: widget.selectedColor,
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(
-                              vertical: AppSpacing.md),
+                            vertical: AppSpacing.md,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(AppRadius.md),
                           ),

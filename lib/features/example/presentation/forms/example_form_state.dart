@@ -20,9 +20,7 @@ class ExampleFormState {
   }
 
   ExampleParams toParams() {
-    return ExampleParams(
-      title: titleController.text.trim(),
-    );
+    return ExampleParams(title: titleController.text.trim());
   }
 
   void reset() {

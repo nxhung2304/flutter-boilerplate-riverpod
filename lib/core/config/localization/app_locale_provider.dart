@@ -25,9 +25,10 @@ class AppLocaleNotifier extends _$AppLocaleNotifier {
   }
 
   void toggleLanguage() {
-    final newLocale = state == AppLocale.vietnamese
-        ? AppLocale.english
-        : AppLocale.vietnamese;
+    final newLocale =
+        state == AppLocale.vietnamese
+            ? AppLocale.english
+            : AppLocale.vietnamese;
     setLocale(appLocale: newLocale);
   }
 

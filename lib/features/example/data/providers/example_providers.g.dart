@@ -13,19 +13,20 @@ String _$exampleLocalDataSourceHash() =>
 @ProviderFor(exampleLocalDataSource)
 final exampleLocalDataSourceProvider =
     AutoDisposeProvider<ExampleLocalDataSource>.internal(
-  exampleLocalDataSource,
-  name: r'exampleLocalDataSourceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$exampleLocalDataSourceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      exampleLocalDataSource,
+      name: r'exampleLocalDataSourceProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$exampleLocalDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef ExampleLocalDataSourceRef
-    = AutoDisposeProviderRef<ExampleLocalDataSource>;
+typedef ExampleLocalDataSourceRef =
+    AutoDisposeProviderRef<ExampleLocalDataSource>;
 String _$exampleRemoteDataSourceHash() =>
     r'15f436b0a621dd7b1065989235f6e8f5d049a6d3';
 
@@ -33,33 +34,35 @@ String _$exampleRemoteDataSourceHash() =>
 @ProviderFor(exampleRemoteDataSource)
 final exampleRemoteDataSourceProvider =
     AutoDisposeProvider<ExampleRemoteDataSource>.internal(
-  exampleRemoteDataSource,
-  name: r'exampleRemoteDataSourceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$exampleRemoteDataSourceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      exampleRemoteDataSource,
+      name: r'exampleRemoteDataSourceProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$exampleRemoteDataSourceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef ExampleRemoteDataSourceRef
-    = AutoDisposeProviderRef<ExampleRemoteDataSource>;
+typedef ExampleRemoteDataSourceRef =
+    AutoDisposeProviderRef<ExampleRemoteDataSource>;
 String _$exampleRepositoryHash() => r'699a6f9c32f1c89d38bfadc23b56965f41ac999d';
 
 /// See also [exampleRepository].
 @ProviderFor(exampleRepository)
 final exampleRepositoryProvider =
     AutoDisposeProvider<ExampleRepository>.internal(
-  exampleRepository,
-  name: r'exampleRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$exampleRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      exampleRepository,
+      name: r'exampleRepositoryProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$exampleRepositoryHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

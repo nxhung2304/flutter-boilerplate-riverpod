@@ -38,7 +38,8 @@ class AppTheme {
     cardTheme: CardThemeData(
       elevation: 2,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppRadius.md)),
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
     ),
   );
 }

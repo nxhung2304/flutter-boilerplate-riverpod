@@ -17,13 +17,14 @@ run-production:
 
 # Setup commands
 setup:
-	brew install pre-commit
 	fvm flutter pub get
 	dart run build_runner build --delete-conflicting-outputs
 	make install-hooks
-	pre-commit install
 
 clean:
+	cd ios/
+	rm -rf Pods Podfile.lock
+	cd ..
 	fvm flutter clean
 	fvm flutter pub get
 

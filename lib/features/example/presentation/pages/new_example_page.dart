@@ -38,8 +38,9 @@ class NewExamplePage extends HookConsumerWidget {
         title: ExampleStrings.createTitle,
         currentRoute: AppRoutes.example,
         body: ExampleForm.create(
-          onSubmit: (ExampleParams exampleParams) =>
-              _onSubmit(context, ref, exampleParams),
+          onSubmit:
+              (ExampleParams exampleParams) =>
+                  _onSubmit(context, ref, exampleParams),
         ),
       ),
     );

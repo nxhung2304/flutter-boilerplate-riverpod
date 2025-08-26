@@ -29,9 +29,10 @@ String _$storageServiceHash() => r'62cbe9319bc400f2f78b16bce45d667585b592a2';
 final storageServiceProvider = Provider<StorageService>.internal(
   storageService,
   name: r'storageServiceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$storageServiceHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$storageServiceHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -46,9 +47,10 @@ String _$apiClientConfigHash() => r'e904915991f7f5477df793cadc833e21494d6201';
 final apiClientConfigProvider = AutoDisposeProvider<ApiClientConfig>.internal(
   apiClientConfig,
   name: r'apiClientConfigProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$apiClientConfigHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$apiClientConfigHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
@@ -63,14 +65,15 @@ String _$appLifecycleManagerHash() =>
 @ProviderFor(appLifecycleManager)
 final appLifecycleManagerProvider =
     AutoDisposeProvider<AppLifecycleManager>.internal(
-  appLifecycleManager,
-  name: r'appLifecycleManagerProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$appLifecycleManagerHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      appLifecycleManager,
+      name: r'appLifecycleManagerProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$appLifecycleManagerHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

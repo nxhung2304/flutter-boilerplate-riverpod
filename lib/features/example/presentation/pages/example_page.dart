@@ -44,21 +44,26 @@ class ExamplePage extends HookConsumerWidget {
   ) {
     return examplesAsync.when(
       loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stackTrace) => Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.error, size: AppSpacing.xxl, color: Colors.red),
-            const SizedBox(height: AppSpacing.md),
-            Text('Error: $error'),
-            const SizedBox(height: AppSpacing.md),
-            ElevatedButton(
-              onPressed: () => ref.invalidate(exampleControllerProvider),
-              child: const Text('Retry'),
+      error:
+          (error, stackTrace) => Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.error,
+                  size: AppSpacing.xxl,
+                  color: Colors.red,
+                ),
+                const SizedBox(height: AppSpacing.md),
+                Text('Error: $error'),
+                const SizedBox(height: AppSpacing.md),
+                ElevatedButton(
+                  onPressed: () => ref.invalidate(exampleControllerProvider),
+                  child: const Text('Retry'),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
       data: (examples) => _buildExampleListView(examples, ref, context),
     );
   }

@@ -44,14 +44,13 @@ class ApiClient {
   }
 
   void _setupInterceptors() {
-    final loggingInterceptor = LoggingInterceptor(
-      enableLogging: true,
-    );
+    final loggingInterceptor = LoggingInterceptor(enableLogging: true);
 
     final authInterceptor = AuthInterceptor(
-        ref: ref,
-        tokenStorageService: tokenStorageService,
-        dio: _dio);
+      ref: ref,
+      tokenStorageService: tokenStorageService,
+      dio: _dio,
+    );
 
     _dio.interceptors.addAll([authInterceptor, loggingInterceptor]);
   }

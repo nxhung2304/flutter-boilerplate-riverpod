@@ -51,12 +51,11 @@ class TestHelper {
     dynamic data,
     int statusCode = 200,
     String? errorCode,
-  }) async =>
-      Response(
-        requestOptions: RequestOptions(path: '/test'),
-        statusCode: statusCode,
-        data: data,
-      );
+  }) async => Response(
+    requestOptions: RequestOptions(path: '/test'),
+    statusCode: statusCode,
+    data: data,
+  );
 
   static void overrideEnvVar(String key, String value) {
     dotenv.env[key] = value;

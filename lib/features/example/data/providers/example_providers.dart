@@ -12,7 +12,8 @@ part 'example_providers.g.dart';
 @riverpod
 ExampleLocalDataSource exampleLocalDataSource(Ref ref) {
   return ExampleLocalDataSource(
-      storageService: ref.read(storageServiceProvider));
+    storageService: ref.read(storageServiceProvider),
+  );
 }
 
 @riverpod

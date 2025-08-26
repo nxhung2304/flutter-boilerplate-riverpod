@@ -13,14 +13,15 @@ String _$tokenStorageServiceHash() =>
 @ProviderFor(TokenStorageService)
 final tokenStorageServiceProvider =
     AutoDisposeAsyncNotifierProvider<TokenStorageService, AuthTokens?>.internal(
-  TokenStorageService.new,
-  name: r'tokenStorageServiceProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$tokenStorageServiceHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      TokenStorageService.new,
+      name: r'tokenStorageServiceProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$tokenStorageServiceHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$TokenStorageService = AutoDisposeAsyncNotifier<AuthTokens?>;
 // ignore_for_file: type=lint

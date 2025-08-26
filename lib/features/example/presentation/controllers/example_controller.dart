@@ -1,4 +1,6 @@
+import 'package:boilerplate_riverpod/core/mixins/app_lifecycle_mixin.dart';
 import 'package:boilerplate_riverpod/core/models/api_response.dart';
+import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/example.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/params/example_params.dart';
 import 'package:boilerplate_riverpod/features/example/data/providers/example_providers.dart';
@@ -7,9 +9,15 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'example_controller.g.dart';
 
 @riverpod
-class ExampleController extends _$ExampleController {
+class ExampleController extends _$ExampleController with AppLifecycleMixin {
   @override
   Future<List<Example>> build() async {
+    _setupLifecycleCallbacks();
+
+    ref.onDispose(() {
+      disposeLifecycleCallbacks();
+    });
+
     final repository = ref.read(exampleRepositoryProvider);
     final response = await repository.all();
 
@@ -18,6 +26,19 @@ class ExampleController extends _$ExampleController {
     } else {
       throw Exception(response.error ?? 'Failed to load Examples');
     }
+  }
+
+  void _setupLifecycleCallbacks() {
+    AppLogger.i("_setupLifecycleCallbacks");
+    registerOnBackground(() {
+      print('App in background');
+    });
+    registerOnForeground(() {
+      print('App in foreground');
+    });
+    registerOnBeforeKill(() {
+      print('App before kill');
+    });
   }
 
   Future<ApiResponse<bool>> createExample(ExampleParams exampleParams) async {
@@ -54,10 +75,15 @@ class ExampleController extends _$ExampleController {
 
         final updatedExample = response.data!;
 
-        final updatedExamples = currentExamples
-            .map((example) =>
-                example.id == updatedExample.id ? updatedExample : example)
-            .toList();
+        final updatedExamples =
+            currentExamples
+                .map(
+                  (example) =>
+                      example.id == updatedExample.id
+                          ? updatedExample
+                          : example,
+                )
+                .toList();
 
         state = AsyncValue.data(updatedExamples);
 

@@ -50,7 +50,8 @@ class InputFormField extends HookConsumerWidget {
         prefixIcon: _buildPrefixIcon(),
         suffixIcon: isPassword ? _buildSuffixIcon(obscure) : null,
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppRadius.md)),
+          borderRadius: BorderRadius.circular(AppRadius.md),
+        ),
         hintText: hintText,
         labelText: labelText,
         errorMaxLines: 2,
@@ -100,14 +101,15 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-        labelText: 'Email',
-        hintText: 'Enter your email',
-        prefixIcon: Icons.email_outlined,
-        initialValue: initialValue,
-        onChanged: onChanged,
-        controller: controller,
-        enabled: enabled,
-        textInputAction: TextInputAction.next);
+      labelText: 'Email',
+      hintText: 'Enter your email',
+      prefixIcon: Icons.email_outlined,
+      initialValue: initialValue,
+      onChanged: onChanged,
+      controller: controller,
+      enabled: enabled,
+      textInputAction: TextInputAction.next,
+    );
   }
 
   static InputFormField password({
@@ -119,15 +121,16 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-        labelText: labelText ?? 'Password',
-        hintText: 'Enter your password',
-        isPassword: true,
-        prefixIcon: Icons.lock_outlined,
-        initialValue: initialValue,
-        onChanged: onChanged,
-        controller: controller,
-        enabled: enabled,
-        textInputAction: TextInputAction.next);
+      labelText: labelText ?? 'Password',
+      hintText: 'Enter your password',
+      isPassword: true,
+      prefixIcon: Icons.lock_outlined,
+      initialValue: initialValue,
+      onChanged: onChanged,
+      controller: controller,
+      enabled: enabled,
+      textInputAction: TextInputAction.next,
+    );
   }
 
   static InputFormField name({
@@ -138,13 +141,14 @@ extension InputFormFieldX on InputFormField {
     bool enabled = true,
   }) {
     return InputFormField(
-        labelText: 'Full Name',
-        hintText: 'Enter your full name',
-        prefixIcon: Icons.person_outlined,
-        initialValue: initialValue,
-        onChanged: onChanged,
-        controller: controller,
-        enabled: enabled,
-        textInputAction: TextInputAction.next);
+      labelText: 'Full Name',
+      hintText: 'Enter your full name',
+      prefixIcon: Icons.person_outlined,
+      initialValue: initialValue,
+      onChanged: onChanged,
+      controller: controller,
+      enabled: enabled,
+      textInputAction: TextInputAction.next,
+    );
   }
 }

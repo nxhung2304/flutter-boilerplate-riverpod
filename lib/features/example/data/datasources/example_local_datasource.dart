@@ -24,8 +24,11 @@ class ExampleLocalDataSource {
       if (jsonList == null) return [];
 
       return jsonList
-          .map((jsonString) =>
-              Example.fromJson(jsonDecode(jsonString) as Map<String, dynamic>))
+          .map(
+            (jsonString) => Example.fromJson(
+              jsonDecode(jsonString) as Map<String, dynamic>,
+            ),
+          )
           .toList();
     } catch (e) {
       return [];
@@ -40,8 +43,9 @@ class ExampleLocalDataSource {
 
   Future<bool> update(Example updatedExample) async {
     final examples = await all();
-    final index =
-        examples.indexWhere((example) => example.id == updatedExample.id);
+    final index = examples.indexWhere(
+      (example) => example.id == updatedExample.id,
+    );
 
     if (index != -1) {
       examples[index] = updatedExample;

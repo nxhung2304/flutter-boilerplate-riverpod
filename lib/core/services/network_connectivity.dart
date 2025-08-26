@@ -4,7 +4,7 @@ class NetworkConnectivity {
   final Connectivity _connectivity;
 
   NetworkConnectivity([Connectivity? connectivity])
-      : _connectivity = connectivity ?? Connectivity();
+    : _connectivity = connectivity ?? Connectivity();
 
   Future<bool> isConnected() async {
     final List<ConnectivityResult> connectivityResult =

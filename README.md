@@ -57,3 +57,8 @@ lib/
     └── strings/          # Shared translations
 ```
 
+
+## Todo
+- [ ]: Build CrashReportingService to use in Logger.e
+- [ ]: add lifecycle app
+- [ ]: add .env to enable features

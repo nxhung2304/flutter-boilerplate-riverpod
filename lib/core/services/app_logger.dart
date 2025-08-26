@@ -21,8 +21,12 @@ class AppLogger {
     }
   }
 
-  static void e(String msg,
-      {dynamic data, dynamic error, StackTrace? stackTrace}) {
+  static void e(
+    String msg, {
+    dynamic data,
+    dynamic error,
+    StackTrace? stackTrace,
+  }) {
     final className = _getCallerClassName();
     final message = data != null ? "$msg: $data" : msg;
     _logger.e("[$className] $message", error: error, stackTrace: stackTrace);
