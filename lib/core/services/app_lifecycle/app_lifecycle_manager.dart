@@ -19,9 +19,11 @@ class AppLifecycleManager {
     try {
       _channel.setMethodCallHandler(_handleNativeCall);
       _isInitialized = true;
-      print('AppLifecycleManager initialized successfully');
+
+      AppLogger.i('AppLifecycleManager initialized successfully');
     } catch (e) {
-      print('Error initializing AppLifecycleManager: $e');
+      AppLogger.e('Error initializing AppLifecycleManager: $e');
+      rethrow;
     }
   }
 

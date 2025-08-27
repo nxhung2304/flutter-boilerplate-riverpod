@@ -1,9 +1,9 @@
 import 'package:boilerplate_riverpod/core/services/app_lifecycle/app_lifecycle_manager.dart';
+import 'package:boilerplate_riverpod/core/services/firebase/analytics_service.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_riverpod/core/config/api_client_config.dart';
 import 'package:boilerplate_riverpod/core/config/enviroment.dart';
 import 'package:boilerplate_riverpod/core/services/api_client.dart';
-import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/core/services/storage_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -38,4 +38,9 @@ ApiClientConfig apiClientConfig(Ref ref) {
 @riverpod
 AppLifecycleManager appLifecycleManager(Ref ref) {
   return AppLifecycleManager();
+}
+
+@riverpod
+AnalyticsService analyticsService(Ref ref) {
+  return AnalyticsService();
 }

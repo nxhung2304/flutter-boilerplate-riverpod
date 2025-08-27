@@ -46,6 +46,7 @@ class Environment {
 
   // Features
   static bool get enabledCrashtics => _getBool('ENABLED_CRASHTICS');
+  static bool get enabledAnalytics => _getBool('ENABLED_ANALYTICS');
 
   static String _getString(String key) {
     final value = dotenv.env[key];
