@@ -53,3 +53,7 @@ app.*.map.json
 .env.test
 
 coverage/*
+
+# Custom lint
+custom_lint.log
+
