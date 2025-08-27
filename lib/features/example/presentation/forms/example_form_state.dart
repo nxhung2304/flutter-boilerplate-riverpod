@@ -15,7 +15,8 @@ class ExampleFormState {
   });
 
   void validateForm() {
-    final titleValid = ExampleValidators.validateTitle(titleController.text) == null;
+    final titleValid =
+        ExampleValidators.validateTitle(titleController.text) == null;
 
     isValid.value = titleValid;
   }

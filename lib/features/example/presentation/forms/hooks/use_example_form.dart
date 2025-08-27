@@ -19,7 +19,7 @@ ExampleFormState useExampleForm({Example? initialExample}) {
 
   useEffect(() {
     Timer? debounceTimer;
-    
+
     void onTextChanged() {
       debounceTimer?.cancel();
       debounceTimer = Timer(const Duration(milliseconds: 300), () {

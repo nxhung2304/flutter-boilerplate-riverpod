@@ -1,4 +1,4 @@
-.PHONY: run-dev run-staging run-production watch setup clean-ios install-hooks remove-hooks
+.PHONY: run-dev run-staging run-production watch setup clean-ios install-hooks remove-hooks format
 
 # Run
 run-dev:
@@ -30,8 +30,13 @@ clean-ios:
 	fvm flutter clean
 	fvm flutter pub get
 
+format:
+	@echo "Formatting Dart code..."
+	dart format .
+	@echo "Code formatting completed!"
+
 # Git
-HOOKS = commit-msg
+HOOKS = commit-msg pre-commit
 
 install-hooks:
 	@for hook in $(HOOKS); do \
@@ -57,7 +62,8 @@ help:
 	@echo "Development:"
 	@echo "  watch          Watch for changes and regenerate code"
 	@echo "  setup          Initial project setup (pub get + generate + hooks)"
-	@echo "  clean-ios          Clean and reset iOS project"
+	@echo "  format         Format all Dart code in the project"
+	@echo "  clean-ios      Clean and reset iOS project"
 	@echo ""
 	@echo "Running:"
 	@echo "  run-dev        Run development environment"
@@ -65,7 +71,7 @@ help:
 	@echo "  run-production Run production environment"
 	@echo ""
 	@echo "Git Hooks:"
-	@echo "  install-hooks  Install git commit hooks"
-	@echo "  remove-hooks   Remove git commit hooks"
+	@echo "  install-hooks  Install git hooks (pre-commit format + commit-msg validation)"
+	@echo "  remove-hooks   Remove git hooks"
 	@echo ""
 	@echo "Usage: make <command>"

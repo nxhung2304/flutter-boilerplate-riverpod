@@ -102,7 +102,7 @@ class ExampleRemoteDataSource {
       if (data == null) {
         return ApiResponse.error('No data returned from server');
       }
-      
+
       final Map<String, dynamic> exampleJson = data as Map<String, dynamic>;
       final deletedExample = Example.fromJson(exampleJson);
 

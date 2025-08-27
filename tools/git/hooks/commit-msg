@@ -28,14 +28,3 @@ else
   echo "            fix(todo): handle null title bug"
   exit 1
 fi
-
-# Dart format check
-if ! dart format --set-exit-if-changed .; then
-  echo ""
-  echo "Dart files are not properly formatted!"
-  echo "Run 'dart format .' to fix formatting issues before committing."
-  exit 1
-fi
-
-echo "Conventional Commit passed and Dart formatting OK."
-exit 0

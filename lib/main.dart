@@ -25,7 +25,6 @@ void main() async {
     await StorageService().initialize();
 
     await AppFeatures().initialize();
-
   } catch (e) {
     AppLogger.e('App initialization failed', data: e);
   }
@@ -43,7 +42,10 @@ void main() async {
 }
 
 Environment _detectEnvironment() {
-  const envName = String.fromEnvironment('ENVIRONMENT', defaultValue: 'development');
+  const envName = String.fromEnvironment(
+    'ENVIRONMENT',
+    defaultValue: 'development',
+  );
   return Environment.values.firstWhere(
     (env) => env.name == envName,
     orElse: () => Environment.development,

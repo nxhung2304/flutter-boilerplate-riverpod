@@ -1,0 +1,24 @@
+#!/bin/sh
+
+echo "Running pre-commit checks..."
+
+dart_files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(dart)$')
+
+if [ -z "$dart_files" ]; then
+  echo "No Dart files to check."
+  exit 0
+fi
+
+if ! echo "$dart_files" | xargs dart format --set-exit-if-changed; then  
+  echo "$dart_files" | xargs dart format
+  
+  echo "$dart_files" | xargs git add
+  
+  echo " Files have been formatted and re-staged."
+  echo " Please review the changes and commit again."
+  exit 0
+fi
+
+echo " All Dart files are properly formatted."
+
+exit 0

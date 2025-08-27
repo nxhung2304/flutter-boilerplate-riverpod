@@ -56,9 +56,3 @@ lib/
     ├── theme/            # App theming
     └── strings/          # Shared translations
 ```
-
-
-## Todo
-- [ ]: Build CrashReportingService to use in Logger.e
-- [x]: add lifecycle app
-- [ ]: add .env to enable features

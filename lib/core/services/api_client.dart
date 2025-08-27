@@ -135,7 +135,7 @@ class ApiClient {
   }) async {
     try {
       await _checkNetwork();
-      
+
       final response = await _dio.patch(
         endpoint,
         data: data,
@@ -158,7 +158,7 @@ class ApiClient {
   }) async {
     try {
       await _checkNetwork();
-      
+
       final response = await _dio.delete(
         endpoint,
         queryParameters: queryParameters,
