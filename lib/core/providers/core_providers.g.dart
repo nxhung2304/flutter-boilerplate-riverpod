@@ -6,7 +6,7 @@ part of 'core_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiClientHash() => r'fa355bb49d025df6e1468ac0c5667c127a9a0077';
+String _$apiClientHash() => r'475cf9b912d3c43008fac3d66edfc486f2357445';
 
 /// See also [apiClient].
 @ProviderFor(apiClient)
@@ -40,24 +40,6 @@ final storageServiceProvider = Provider<StorageService>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef StorageServiceRef = ProviderRef<StorageService>;
-String _$apiClientConfigHash() => r'e904915991f7f5477df793cadc833e21494d6201';
-
-/// See also [apiClientConfig].
-@ProviderFor(apiClientConfig)
-final apiClientConfigProvider = AutoDisposeProvider<ApiClientConfig>.internal(
-  apiClientConfig,
-  name: r'apiClientConfigProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$apiClientConfigHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ApiClientConfigRef = AutoDisposeProviderRef<ApiClientConfig>;
 String _$appLifecycleManagerHash() =>
     r'9f0ee8618560e529521bae6b59866895d168a5b6';
 
@@ -78,5 +60,23 @@ final appLifecycleManagerProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef AppLifecycleManagerRef = AutoDisposeProviderRef<AppLifecycleManager>;
+String _$analyticsServiceHash() => r'a78e9020e79b5e99632cc4cee7e5f7156c672acd';
+
+/// See also [analyticsService].
+@ProviderFor(analyticsService)
+final analyticsServiceProvider = AutoDisposeProvider<AnalyticsService>.internal(
+  analyticsService,
+  name: r'analyticsServiceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$analyticsServiceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef AnalyticsServiceRef = AutoDisposeProviderRef<AnalyticsService>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

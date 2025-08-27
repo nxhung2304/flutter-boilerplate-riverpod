@@ -1,18 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:boilerplate_riverpod/core/config/enviroment.dart';
 
 class TestHelper {
-  static Future<void> setupTestEnv() async {
-    await dotenv.load(fileName: 'test/.env.test');
-    Environment.initializeForTesting();
-  }
-
-  static void tearDownTestEnvironment() {
-    dotenv.clean();
-    Environment.resetForTesting();
-  }
-
   static Map<String, dynamic> createSuccessResponse({
     required Map<String, dynamic> data,
     String message = 'Success',

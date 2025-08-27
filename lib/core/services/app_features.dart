@@ -1,4 +1,3 @@
-import 'package:boilerplate_riverpod/core/config/enviroment.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 
@@ -25,7 +24,7 @@ class AppFeatures {
   }
 
   Future<void> _initializeCrashlytics() async {
-    final enabledCrashlytics = Environment.enabledCrashtics;
+    final enabledCrashlytics = true;
 
     AppLogger.i(
       'Initializing Crashlytics',

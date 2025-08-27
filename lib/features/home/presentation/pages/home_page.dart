@@ -1,3 +1,4 @@
+import 'package:boilerplate_riverpod/core/services/firebase/analytics_service.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:boilerplate_riverpod/core/config/router/app_routes.dart';
@@ -10,7 +11,24 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SharedScaffold(
-      body: Text(HomeStrings.title),
+      body: Column(
+        children: [
+          Text(HomeStrings.title),
+          TextButton(
+            onPressed: () => throw Exception(),
+            child: const Text("Throw Test Exception"),
+          ),
+          TextButton(
+            onPressed: () {
+              AnalyticsService.logEvent(
+                name: "test_event",
+                parameters: {"param1": "value1"},
+              );
+            },
+            child: Text(""),
+          ),
+        ],
+      ),
       title: HomeStrings.title,
       currentRoute: AppRoutes.home,
     );

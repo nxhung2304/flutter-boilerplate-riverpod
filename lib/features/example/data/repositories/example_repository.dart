@@ -24,8 +24,7 @@ class ExampleRepository {
       final localExamples = await localDataSource.all();
       return ApiResponse.success(localExamples);
     } catch (e) {
-      final localExamples = await localDataSource.all();
-      return ApiResponse.success(localExamples);
+      return ApiResponse.error(e.toString());
     }
   }
 
