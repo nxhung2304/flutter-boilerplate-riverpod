@@ -98,11 +98,15 @@ class ExampleRemoteDataSource {
         AppEndpoints.deleteExample(exampleId),
       );
 
-      final Map<String, dynamic> exampleJson =
-          response.data['data'] as Map<String, dynamic>;
-      final toggledExample = Example.fromJson(exampleJson);
+      final data = response.data?['data'];
+      if (data == null) {
+        return ApiResponse.error('No data returned from server');
+      }
+      
+      final Map<String, dynamic> exampleJson = data as Map<String, dynamic>;
+      final deletedExample = Example.fromJson(exampleJson);
 
-      return ApiResponse.success(toggledExample);
+      return ApiResponse.success(deletedExample);
     } catch (e) {
       return ApiResponse.error(e.toString());
     }

@@ -56,7 +56,7 @@ class ExampleForm extends HookConsumerWidget {
     }
 
     if (errorMessage != null) {
-      return Center(child: Text('Error: $errorMessage'));
+      return Center(child: Text(errorMessage));
     }
 
     return Form(

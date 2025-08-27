@@ -37,7 +37,14 @@ class ExampleLocalDataSource {
 
   Future<bool> add(Example example) async {
     final examples = await all();
-    examples.add(example);
+
+    final existingIndex = examples.indexWhere((e) => e.id == example.id);
+    if (existingIndex != -1) {
+      examples[existingIndex] = example;
+    } else {
+      examples.add(example);
+    }
+
     return await saveExamples(examples);
   }
 

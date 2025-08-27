@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/params/example_params.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/example.dart';
+import 'package:boilerplate_riverpod/features/example/presentation/validators/example_validators.dart';
 
 class ExampleFormState {
   final TextEditingController titleController;
@@ -14,9 +15,9 @@ class ExampleFormState {
   });
 
   void validateForm() {
-    final hasTitle = titleController.text.trim().isNotEmpty;
+    final titleValid = ExampleValidators.validateTitle(titleController.text) == null;
 
-    isValid.value = hasTitle;
+    isValid.value = titleValid;
   }
 
   ExampleParams toParams() {

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/example.dart';
@@ -17,13 +18,19 @@ ExampleFormState useExampleForm({Example? initialExample}) {
   );
 
   useEffect(() {
+    Timer? debounceTimer;
+    
     void onTextChanged() {
-      formState.validateForm();
+      debounceTimer?.cancel();
+      debounceTimer = Timer(const Duration(milliseconds: 300), () {
+        formState.validateForm();
+      });
     }
 
     titleController.addListener(onTextChanged);
 
     return () {
+      debounceTimer?.cancel();
       titleController.removeListener(onTextChanged);
     };
   }, [titleController]);
@@ -35,6 +42,10 @@ ExampleFormState useExampleForm({Example? initialExample}) {
 
     return null;
   }, [initialExample]);
+
+  useEffect(() {
+    return () => formState.dispose();
+  }, []);
 
   return formState;
 }

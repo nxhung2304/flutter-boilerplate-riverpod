@@ -101,6 +101,8 @@ class ExampleController extends _$ExampleController with AppLifecycleMixin {
   }
 
   Future<ApiResponse<bool>> toggleExample(int id) async {
+    state = const AsyncLoading();
+    
     try {
       final repository = ref.read(exampleRepositoryProvider);
       final response = await repository.toggleExample(id);
@@ -122,6 +124,8 @@ class ExampleController extends _$ExampleController with AppLifecycleMixin {
   }
 
   Future<ApiResponse<bool>> deleteExample(int id) async {
+    state = const AsyncLoading();
+    
     try {
       final repository = ref.read(exampleRepositoryProvider);
       final response = await repository.delete(id);
