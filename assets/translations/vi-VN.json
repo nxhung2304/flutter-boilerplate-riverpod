@@ -4,10 +4,8 @@
     "create": "Tạo mới",
     "update": "Cập nhật",
     "name": "Tên",
-    
     "create_title": "Tạo mới ví dụ",
     "update_title": "Cập nhật ví dụ",
-
     "create_success": "Tạo thành công",
     "update_success": "Cập nhật thành công",
     "delete_success": "Xóa thành công"

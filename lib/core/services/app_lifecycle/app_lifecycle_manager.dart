@@ -30,19 +30,16 @@ class AppLifecycleManager {
   static Future<void> _handleNativeCall(MethodCall call) async {
     switch (call.method) {
       case "onForeground":
-        AppLogger.i("onForeground");
         for (final callback in _foregroundCallbacks) {
           callback();
         }
         break;
       case "onBackground":
-        AppLogger.i("onBackground");
         for (final callback in _backgroundCallbacks) {
           callback();
         }
         break;
       case "onBeforeKill":
-        AppLogger.i("onBeforeKill");
         for (final callback in _beforeKillCallbacks) {
           callback();
         }

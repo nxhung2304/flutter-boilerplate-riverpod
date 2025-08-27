@@ -30,11 +30,6 @@ class ExampleFormState {
     isValid.value = false;
   }
 
-  void dispose() {
-    titleController.dispose();
-    isValid.dispose();
-  }
-
   void fillFromExample(Example example) {
     titleController.text = example.title;
 

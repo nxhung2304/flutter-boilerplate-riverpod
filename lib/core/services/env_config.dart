@@ -30,8 +30,6 @@ class EnvConfig {
     final String envFile = _getEnvFileName(env);
 
     try {
-      await _checkFileExists(envFile);
-
       await dotenv.load(fileName: envFile);
 
       _validateRequiredEnvVars();
@@ -46,21 +44,6 @@ class EnvConfig {
   }
 
   // MARK: - Private methods
-
-  static Future<void> _checkFileExists(String envFile) async {
-    final file = File(envFile);
-    if (!await file.exists()) {
-      final sampleFile = '$envFile.sample';
-      final hasSample = await File(sampleFile).exists();
-
-      throw FileSystemException(
-        'Environment file not found: $envFile'
-        '${hasSample ? '\nSample file available: $sampleFile' : ''}',
-        envFile,
-      );
-    }
-  }
-
   static void _validateRequiredEnvVars() {
     final required = ['API_BASE_URL'];
 

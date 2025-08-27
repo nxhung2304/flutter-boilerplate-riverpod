@@ -11,24 +11,7 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SharedScaffold(
-      body: Column(
-        children: [
-          Text(HomeStrings.title),
-          TextButton(
-            onPressed: () => throw Exception(),
-            child: const Text("Throw Test Exception"),
-          ),
-          TextButton(
-            onPressed: () {
-              AnalyticsService.logEvent(
-                name: "test_event",
-                parameters: {"param1": "value1"},
-              );
-            },
-            child: Text(""),
-          ),
-        ],
-      ),
+      body: Column(children: [Text(HomeStrings.title)]),
       title: HomeStrings.title,
       currentRoute: AppRoutes.home,
     );

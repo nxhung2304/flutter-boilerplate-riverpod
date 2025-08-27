@@ -5,9 +5,18 @@
     "name": "Name",
     "create_success": "Create success",
     "update_success": "Update success",
-    "delete_success": "Delete success"
+    "delete_success": "Delete success",
+    "create_title": "Create new example",
+    "update_title": "Update example",
+    "create": "Create",
+    "update": "Update"
   },
   "home": {
     "title": "Home"
+  },
+  "errors": {
+    "example": {
+      "name_min_length": "Name is too short"
+    }
   }
 }

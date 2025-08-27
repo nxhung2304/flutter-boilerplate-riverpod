@@ -43,9 +43,5 @@ ExampleFormState useExampleForm({Example? initialExample}) {
     return null;
   }, [initialExample]);
 
-  useEffect(() {
-    return () => formState.dispose();
-  }, []);
-
   return formState;
 }
