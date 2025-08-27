@@ -10,20 +10,7 @@ class NetworkConnectivity {
     final List<ConnectivityResult> connectivityResult =
         await _connectivity.checkConnectivity();
 
-    if (connectivityResult.contains(ConnectivityResult.mobile)) {
-      return true;
-    } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
-      return true;
-    } else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
-      return true;
-    } else if (connectivityResult.contains(ConnectivityResult.vpn)) {
-      return true;
-    } else if (connectivityResult.contains(ConnectivityResult.other)) {
-      return true;
-    } else if (connectivityResult.contains(ConnectivityResult.none)) {
-      return false;
-    }
-
-    return false;
+    // Return false only if no connection is available
+    return !connectivityResult.contains(ConnectivityResult.none);
   }
 }

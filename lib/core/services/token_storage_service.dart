@@ -61,7 +61,7 @@ class TokenStorageService extends _$TokenStorageService {
       final tokenJson = jsonDecode(tokenString) as Map<String, dynamic>;
       final tokens = AuthTokens.fromJson(tokenJson);
       if (_isTokenValid(tokens)) {
-        AppLogger.e("Loaded valid tokens", data: tokens.uid);
+        AppLogger.i("Loaded valid tokens", data: tokens.uid);
         return tokens;
       } else {
         await clearTokens();
@@ -72,13 +72,12 @@ class TokenStorageService extends _$TokenStorageService {
   }
 
   bool _isTokenValid(AuthTokens tokens) {
-    if (tokens.expiry == null || tokens.expiry == 0) {
+    final expiry = tokens.expiry;
+    if (expiry == null || expiry == 0) {
       return false;
     }
 
-    final expiryDate = DateTime.fromMillisecondsSinceEpoch(
-      tokens.expiry! * 1000,
-    );
+    final expiryDate = DateTime.fromMillisecondsSinceEpoch(expiry * 1000);
     final now = DateTime.now();
 
     return now.isBefore(expiryDate);

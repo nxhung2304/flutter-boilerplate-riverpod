@@ -10,7 +10,12 @@ import 'package:boilerplate_riverpod/features/home/presentation/pages/home_page.
 final appRouter = GoRouter(
   initialLocation: AppRoutes.home,
   errorBuilder: (context, state) {
-    return Text(state.error.toString());
+    return Scaffold(
+      appBar: AppBar(title: const Text('Error')),
+      body: const Center(
+        child: Text('Page not found'),
+      ),
+    );
   },
   routes: [
     GoRoute(path: AppRoutes.home, builder: (context, state) => HomePage()),
@@ -27,7 +32,10 @@ final appRouter = GoRouter(
               return Text(ExampleErrorStrings.idNotFound);
             }
 
-            final exampleId = int.parse(exampleIdString);
+            final exampleId = int.tryParse(exampleIdString);
+            if (exampleId == null) {
+              return Text(ExampleErrorStrings.idNotFound);
+            }
 
             return EditExamplePage(exampleId: exampleId);
           },

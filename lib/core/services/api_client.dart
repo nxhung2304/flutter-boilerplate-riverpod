@@ -55,11 +55,10 @@ class ApiClient {
     _dio.interceptors.addAll([authInterceptor, loggingInterceptor]);
   }
 
-  Future<Response> get<T>(
+  Future<Response> get(
     String endpoint, {
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
-    T Function(Map<String, dynamic>)? fromJson,
   }) async {
     try {
       await _checkNetwork();
@@ -74,12 +73,11 @@ class ApiClient {
     }
   }
 
-  Future<Response> post<T>(
+  Future<Response> post(
     String endpoint, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
-    T Function(Map<String, dynamic>)? fromJson,
   }) async {
     try {
       await _checkNetwork();
@@ -109,14 +107,15 @@ class ApiClient {
     throw NetworkException.notConnected();
   }
 
-  Future<Response> put<T>(
+  Future<Response> put(
     String endpoint, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
-    T Function(Map<String, dynamic>)? fromJson,
   }) async {
     try {
+      await _checkNetwork();
+
       final response = await _dio.put(
         endpoint,
         data: data,
@@ -128,37 +127,47 @@ class ApiClient {
     }
   }
 
-  Future<Response> patch<T>(
+  Future<Response> patch(
     String endpoint, {
     dynamic data,
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
-    T Function(Map<String, dynamic>)? fromJson,
   }) async {
     try {
+      await _checkNetwork();
+      
       final response = await _dio.patch(
         endpoint,
         data: data,
         queryParameters: queryParameters,
       );
       return response;
+    } on NetworkException {
+      rethrow;
+    } on DioException {
+      rethrow;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future<Response> delete<T>(
+  Future<Response> delete(
     String endpoint, {
     Map<String, dynamic>? queryParameters,
     Map<String, String>? headers,
-    T Function(Map<String, dynamic>)? fromJson,
   }) async {
     try {
+      await _checkNetwork();
+      
       final response = await _dio.delete(
         endpoint,
         queryParameters: queryParameters,
       );
       return response;
+    } on NetworkException {
+      rethrow;
+    } on DioException {
+      rethrow;
     } catch (e) {
       rethrow;
     }
