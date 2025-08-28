@@ -3,16 +3,15 @@
 # Run
 run-dev:
 	@echo " Starting development environment..."
-	flutter run --dart-define=ENVIRONMENT=development
+	fvm flutter run --dart-define=ENVIRONMENT=development
 
 run-staging:
 	@echo " Starting staging environment..."
-	flutter run --dart-define=ENVIRONMENT=staging
+	fvm flutter run --dart-define=ENVIRONMENT=staging
 
 run-production:
 	@echo " Starting production environment..."
-	flutter run --dart-define=ENVIRONMENT=production --release
-
+	fvm flutter run --dart-define=ENVIRONMENT=production --release
 
 # Setup
 watch:

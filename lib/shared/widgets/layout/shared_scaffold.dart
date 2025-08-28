@@ -1,6 +1,9 @@
+import 'package:boilerplate_riverpod/core/extensions/media_query_extension.dart';
+import 'package:boilerplate_riverpod/shared/widgets/layout/mobile_app_bar.dart';
+import 'package:boilerplate_riverpod/shared/widgets/layout/web_app_bar.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:boilerplate_riverpod/shared/widgets/layout/shared_app_bar.dart';
 import 'package:boilerplate_riverpod/shared/widgets/layout/shared_bottom_nav.dart';
 
 class SharedScaffold extends ConsumerWidget {
@@ -13,6 +16,7 @@ class SharedScaffold extends ConsumerWidget {
   final bool showAppBar;
   final bool centerTitle;
   final Color? appBarBackgroundColor;
+  final Widget? customWebLeading;
 
   const SharedScaffold({
     super.key,
@@ -25,21 +29,39 @@ class SharedScaffold extends ConsumerWidget {
     this.showAppBar = true,
     this.centerTitle = true,
     this.appBarBackgroundColor,
+    this.customWebLeading,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _appBar() {
+      if (!showAppBar) return null;
+
+      if (kIsWeb) {
+        return WebAppBar(
+          title: title,
+          actions: appBarActions,
+          customLeading: customWebLeading,
+        );
+      }
+
+      return MobileAppBar(
+        title: title,
+        centerTitle: centerTitle,
+        actions: appBarActions,
+        backgroundColor: appBarBackgroundColor,
+      );
+    }
+
+    _bottomNav() {
+      if (!showBottomNav || !context.isMobile) return null;
+
+      return SharedBottomNav(currentRoute: currentRoute);
+    }
+
     return Scaffold(
-      appBar:
-          showAppBar
-              ? SharedAppBar(
-                title: title,
-                centerTitle: centerTitle,
-                backgroundColor: appBarBackgroundColor,
-              )
-              : null,
-      bottomNavigationBar:
-          showBottomNav ? SharedBottomNav(currentRoute: currentRoute) : null,
+      appBar: _appBar(),
+      bottomNavigationBar: _bottomNav(),
       body: body,
       floatingActionButton: floatingActionButton,
     );

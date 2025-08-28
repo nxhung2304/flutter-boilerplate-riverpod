@@ -3,6 +3,7 @@ import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/core/services/env_configs/api_config.dart';
 import 'package:boilerplate_riverpod/core/services/env_configs/app_config.dart';
 import 'package:boilerplate_riverpod/core/services/env_configs/auth_config.dart';
+import 'package:boilerplate_riverpod/core/services/env_configs/features_config.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 enum Environment { development, staging, production, test }
@@ -13,10 +14,12 @@ class EnvConfig {
   static final ApiConfig _apiConfig = ApiConfig();
   static final AppConfig _appConfig = AppConfig();
   static final AuthConfig _authConfig = AuthConfig();
+  static final FeaturesConfig _featuresConfig = FeaturesConfig();
 
   static ApiConfig get api => _apiConfig;
   static AppConfig get app => _appConfig;
   static AuthConfig get auth => _authConfig;
+  static FeaturesConfig get features => _featuresConfig;
 
   static Environment get currentEnv => _currentEnv;
 
@@ -34,7 +37,7 @@ class EnvConfig {
 
       _validateRequiredEnvVars();
 
-      AppLogger.i(' Environment loaded successfully: $envFile');
+      AppLogger.i('Environment loaded successfully: $envFile');
     } catch (e, stackTrace) {
       final errorMsg = 'Failed to initialize environment ($envFile): $e';
       AppLogger.e(errorMsg);

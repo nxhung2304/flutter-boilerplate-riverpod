@@ -19,21 +19,19 @@ class ExamplePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final examplesAsync = ref.watch(exampleControllerProvider);
     final isLoadingDemo = useState(false);
-    final isSkeletonDemo = useState(false);
 
     return SharedScaffold(
       body: LoadingOverlay(
         isLoading: isLoadingDemo.value,
         child: Column(
           children: [
-            _buildButtons(context, isLoadingDemo, isSkeletonDemo),
+            _buildButtons(context, isLoadingDemo),
             Expanded(
               child: _buildExampleList(
                 examplesAsync,
                 ref,
                 context,
                 isLoadingDemo,
-                isSkeletonDemo,
               ),
             ),
           ],
@@ -47,36 +45,23 @@ class ExamplePage extends HookConsumerWidget {
   Widget _buildButtons(
     BuildContext context,
     ValueNotifier<bool> isLoadingDemo,
-    ValueNotifier<bool> isSkeletonDemo,
   ) {
     return Padding(
       padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () => context.push(AppRoutes.newExample),
-                  child: Text(ExampleStrings.create),
-                ),
-              ),
-            ],
+          ElevatedButton(
+            onPressed: () => context.push(AppRoutes.newExample),
+            child: Text(ExampleStrings.create),
           ),
           const SizedBox(height: AppSpacing.sm),
           Column(
             children: [
               ElevatedButton(
                 onPressed: () => _showLoadingDemo(isLoadingDemo),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
                 child: const Text('Demo Loading'),
               ),
               const SizedBox(width: AppSpacing.sm),
-              ElevatedButton(
-                onPressed: () => _showSkeletonDemo(isSkeletonDemo),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-                child: const Text('Demo Skeleton'),
-              ),
               ElevatedButton(
                 onPressed: () => throw Exception(),
                 child: const Text("Throw Test Exception"),
@@ -103,23 +88,12 @@ class ExamplePage extends HookConsumerWidget {
     isLoadingDemo.value = false;
   }
 
-  void _showSkeletonDemo(ValueNotifier<bool> isSkeletonDemo) async {
-    isSkeletonDemo.value = true;
-    await Future.delayed(const Duration(seconds: 2));
-    isSkeletonDemo.value = false;
-  }
-
   Widget _buildExampleList(
     AsyncValue<List<dynamic>> examplesAsync,
     WidgetRef ref,
     BuildContext context,
     ValueNotifier<bool> isLoadingDemo,
-    ValueNotifier<bool> isSkeletonDemo,
   ) {
-    if (isSkeletonDemo.value) {
-      return _buildSkeletonList();
-    }
-
     return examplesAsync.when(
       loading: () => _buildSkeletonList(),
       error:

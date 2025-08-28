@@ -6,18 +6,17 @@ class AppLogger {
       methodCount: 0,
       errorMethodCount: 0,
       lineLength: 80,
-      colors: true,
-      printEmojis: true,
       noBoxingByDefault: true,
     ),
   );
 
   static void d(String msg, {dynamic data}) {
-    final className = _getCallerClassName();
+    final prefix = _getCallerInfo();
+
     if (data != null) {
-      _logger.d("[$className] $msg: $data");
+      _logger.d("[$prefix] $msg: $data");
     } else {
-      _logger.d("[$className] $msg");
+      _logger.d("[$prefix] $msg");
     }
   }
 
@@ -27,42 +26,51 @@ class AppLogger {
     dynamic error,
     StackTrace? stackTrace,
   }) {
-    final className = _getCallerClassName();
+    final prefix = _getCallerInfo();
+
     final message = data != null ? "$msg: $data" : msg;
-    _logger.e("[$className] $message", error: error, stackTrace: stackTrace);
+
+    _logger.e("[$prefix] $message", error: error, stackTrace: stackTrace);
   }
 
   static void i(String msg, {dynamic data}) {
-    final className = _getCallerClassName();
+    final prefix = _getCallerInfo();
+
     if (data != null) {
-      _logger.i("[$className] $msg: $data");
+      _logger.i("[$prefix] $msg: $data");
     } else {
-      _logger.i("[$className] $msg");
+      _logger.i("[$prefix] $msg");
     }
   }
 
   static void w(String msg, {dynamic data}) {
-    final className = _getCallerClassName();
+    final prefix = _getCallerInfo();
+
     if (data != null) {
-      _logger.w("[$className] $msg: $data");
+      _logger.w("[$prefix] $msg: $data");
     } else {
-      _logger.w("[$className] $msg");
+      _logger.w("[$prefix] $msg");
     }
   }
 
-  static String _getCallerClassName() {
-    final stackTrace = StackTrace.current;
-    final frames = stackTrace.toString().split('\n');
+  static String _getCallerInfo() {
+    try {
+      final stackTrace = StackTrace.current.toString();
+      final lines = stackTrace.split('\n');
 
-    for (int i = 1; i < frames.length; i++) {
-      final frame = frames[i];
-      if (!frame.contains('AppLogger') && !frame.contains('Logger')) {
-        final match = RegExp(r'(\w+)\.').firstMatch(frame);
-        if (match != null) {
-          return match.group(1) ?? 'Unknown';
+      for (final line in lines) {
+        if (!line.contains('AppLogger')) {
+          final match = RegExp(r'(\w+)\.(\w+)\s+\(').firstMatch(line);
+          if (match != null) {
+            final prefix = match.group(1);
+            final methodName = match.group(2);
+            return '$prefix#$methodName';
+          }
         }
       }
+    } catch (e) {
+      return 'AppLogger';
     }
-    return 'Unknown';
+    return 'AppLogger';
   }
 }

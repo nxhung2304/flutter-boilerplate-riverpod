@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class SharedAppBar extends ConsumerWidget implements PreferredSizeWidget {
+class MobileAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
   final Color? backgroundColor;
   final Color? foregroundColor;
   final List<Widget>? actions;
   final bool centerTitle;
 
-  const SharedAppBar({
+  const MobileAppBar({
     super.key,
     required this.title,
     this.backgroundColor = Colors.blue,

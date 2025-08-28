@@ -4,6 +4,7 @@ import 'package:boilerplate_riverpod/core/services/app_logger.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/example.dart';
 import 'package:boilerplate_riverpod/features/example/data/models/params/example_params.dart';
 import 'package:boilerplate_riverpod/features/example/data/providers/example_providers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'example_controller.g.dart';
@@ -29,6 +30,11 @@ class ExampleController extends _$ExampleController with AppLifecycleMixin {
   }
 
   void _setupLifecycleCallbacks() {
+    if (kIsWeb) {
+      AppLogger.i('AppLifecycleManager not supported on Web');
+      return;
+    }
+
     registerOnBackground(() {
       AppLogger.i('App in background');
     });

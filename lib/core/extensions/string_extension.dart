@@ -32,6 +32,20 @@ extension StringExtensions on String {
       return null;
     }
   }
+
+  parseBool({bool defaultValue = false}) {
+    final lower = toLowerCase();
+
+    if (lower == 'true' || lower == '1') return true;
+
+    if (lower == 'false' || lower == '0') return false;
+
+    return defaultValue;
+  }
+
+  parseInt({int defaultValue = 0}) {
+    return int.tryParse(this) ?? defaultValue;
+  }
 }
 
 extension ColorStringX on String {

@@ -20,9 +20,9 @@ class ExampleRepository {
         await localDataSource.saveExamples(response.data!);
         return response;
       }
+      final examples = await localDataSource.all();
 
-      final localExamples = await localDataSource.all();
-      return ApiResponse.success(localExamples);
+      return ApiResponse.success(examples);
     } catch (e) {
       return ApiResponse.error(e.toString());
     }

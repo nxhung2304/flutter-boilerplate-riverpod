@@ -51,14 +51,12 @@ class AppLifecycleManager {
   }
 
   static void onForeground(Function callback) {
-    AppLogger.i(callback.toString());
     if (!_foregroundCallbacks.contains(callback)) {
       _foregroundCallbacks.add(callback);
     }
   }
 
   static void onBackground(Function callback) {
-    AppLogger.i(callback.toString());
     if (!_backgroundCallbacks.contains(callback)) {
       _backgroundCallbacks.add(callback);
     }
