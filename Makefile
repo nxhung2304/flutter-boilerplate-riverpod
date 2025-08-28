@@ -21,6 +21,9 @@ setup:
 	fvm flutter pub get
 	dart run build_runner build --delete-conflicting-outputs
 	make install-hooks
+	cp .env.development.sample .env.development
+	cp .env.staging.sample .env.staging
+	cp .env.production.sample .env.production
 
 clean-ios:
 	cd ios/
