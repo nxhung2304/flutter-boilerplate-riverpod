@@ -6,6 +6,7 @@ class AuthConfig {
   AuthConfig._internal();
 
   String get clientId => dotenv.env['AUTH_CLIENT_ID'] ?? '';
+  List<String> get clientSecret =>
+      dotenv.env['AUTH_CLIENT_SECRET']?.split(',') ?? [];
   String get redirectUri => dotenv.env['AUTH_REDIRECT_URI'] ?? '';
-  List<String> get scopes => dotenv.env['AUTH_SCOPES']?.split(',') ?? [];
 }
