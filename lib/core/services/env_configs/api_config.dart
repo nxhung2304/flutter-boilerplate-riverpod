@@ -7,6 +7,6 @@ class ApiConfig {
 
   String get baseUrl => dotenv.env['API_BASE_URL'] ?? '';
   String get timeoutConnect => dotenv.env['API_TIMEOUT_CONNECT'] ?? '';
-  String get timeoutReceive => dotenv.env['API_TIMEOUT_CONNECT'] ?? '';
-  String get enableLogging => dotenv.env['API_TIMEOUT_CONNECT'] ?? '';
+  String get timeoutReceive => dotenv.env['API_TIMEOUT_RECEIVE'] ?? '';
+  String get enableLogging => dotenv.env['API_ENABLE_LOGGING'] ?? '';
 }
