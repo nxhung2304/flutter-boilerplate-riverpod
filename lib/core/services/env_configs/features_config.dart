@@ -9,6 +9,6 @@ class FeaturesConfig {
   bool get enabledCrashlytics =>
       dotenv.env['FEATURE_ENABLED_CRASHLYTICS']?.parseBool();
 
-  bool get enableCrashlytics =>
-      dotenv.env['FEATURE_ENABLE_CRASHLYTICS']?.parseBool();
+  bool get enabledAnalytics =>
+      dotenv.env['FEATURE_ENABLED_ANALYTICS']?.parseBool();
 }

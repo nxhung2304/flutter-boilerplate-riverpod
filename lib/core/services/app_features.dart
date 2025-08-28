@@ -9,23 +9,19 @@ class AppFeatures {
     if (_isInitialized) return;
 
     try {
-      AppLogger.i('Starting AppFeatures initialization');
+      AppLogger.i('Starting initialization');
 
       await _initializeCrashlytics();
 
       _isInitialized = true;
-      AppLogger.i('AppFeatures initialized successfully');
+      AppLogger.i('initialized successfully');
     } catch (e, stackTrace) {
-      AppLogger.e(
-        'Failed to initialize AppFeatures',
-        error: e,
-        stackTrace: stackTrace,
-      );
+      AppLogger.e('Failed to initialize', error: e, stackTrace: stackTrace);
     }
   }
 
   Future<void> _initializeCrashlytics() async {
-    final enabledCrashlytics = EnvConfig.features.enableCrashlytics;
+    final enabledCrashlytics = EnvConfig.features.enabledCrashlytics;
 
     AppLogger.i(
       'Initializing Crashlytics',

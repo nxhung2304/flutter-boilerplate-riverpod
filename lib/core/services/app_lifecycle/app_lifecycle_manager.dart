@@ -20,9 +20,9 @@ class AppLifecycleManager {
       _channel.setMethodCallHandler(_handleNativeCall);
       _isInitialized = true;
 
-      AppLogger.i('AppLifecycleManager initialized successfully');
+      AppLogger.i('Initialized successfully');
     } catch (e) {
-      AppLogger.e('Error initializing AppLifecycleManager: $e');
+      AppLogger.e('Error initializing: $e');
       rethrow;
     }
   }
