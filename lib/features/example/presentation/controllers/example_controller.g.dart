@@ -6,7 +6,7 @@ part of 'example_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$exampleControllerHash() => r'65e0067145db4f5d55ca04b3bd991ee5cdd753dc';
+String _$exampleControllerHash() => r'c222be5662aaa8157d822ac7c610aaacdbe356ef';
 
 /// See also [ExampleController].
 @ProviderFor(ExampleController)
